@@ -22,7 +22,8 @@ const chartConfig = {
 // Daily trend exactly as provided by GET /api/dashboard (sales_trend).
 export function TrendsPage() {
   const [metric, setMetric] = useState('revenue')
-  const { data = [], loading, error, retry } = useApi(() => fetchTrends())
+  const { data: trendsResult, loading, error, retry } = useApi(() => fetchTrends())
+  const data = trendsResult ?? []
 
   return (
     <div className="flex flex-col gap-4">

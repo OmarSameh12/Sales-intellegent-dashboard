@@ -1,9 +1,11 @@
-import { Package, ShoppingCart, Users, Wallet } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Package, ReceiptText, ShoppingCart, TrendingUp, Upload, Users, Wallet } from 'lucide-react'
 import { fetchOverview, fetchTrends, fetchRecentOrders } from '@/services/api'
 import { useApi } from '@/hooks/useApi'
 import { ErrorState } from '@/components/error-state'
 import { fmtCurrency, fmtNumber } from '@/lib/insights'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
@@ -60,6 +62,25 @@ export function OverviewPage() {
               <div className="text-2xl font-bold tracking-tight">{card.value}</div>
             </CardContent>
           </Card>
+        ))}
+      </div>
+
+      {/* Quick navigation to every dashboard page */}
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-muted-foreground mr-1 text-sm">Go to:</span>
+        {[
+          { to: '/trends', label: 'Sales Trends', icon: TrendingUp },
+          { to: '/products', label: 'Products', icon: Package },
+          { to: '/customers', label: 'Customers', icon: Users },
+          { to: '/transactions', label: 'Transactions', icon: ReceiptText },
+          { to: '/upload', label: 'Upload Data', icon: Upload },
+        ].map((link) => (
+          <Button key={link.to} variant="outline" size="sm" asChild className="gap-1.5">
+            <Link to={link.to}>
+              <link.icon className="size-4" />
+              {link.label}
+            </Link>
+          </Button>
         ))}
       </div>
 

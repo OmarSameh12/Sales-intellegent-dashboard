@@ -114,8 +114,6 @@ export function AppSidebar({ ...props }) {
                   Signed in as omar.sameh@example.com
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Account settings</DropdownMenuItem>
-                <DropdownMenuItem>Sign out</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </SidebarMenuItem>
