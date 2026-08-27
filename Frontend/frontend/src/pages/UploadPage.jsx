@@ -99,7 +99,10 @@ export function UploadPage() {
               type="file"
               accept=".csv,text/csv"
               className="hidden"
-              onChange={(e) => handleFiles(e.target.files)}
+              onChange={(e) => {
+                handleFiles(e.target.files)
+                e.target.value = ''
+              }}
             />
           </div>
 
@@ -148,7 +151,7 @@ export function UploadPage() {
         </Card>
       )}
 
-      {result.preview.length > 0 && (
+      {result && result.preview.length > 0 && (
         <Card>
           <CardHeader>
             <CardTitle>Preview</CardTitle>
